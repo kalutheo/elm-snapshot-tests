@@ -1,8 +1,8 @@
 // elm-snapshots-environment
-const NodeEnvironment = require('jest-environment-node');
+const NodeEnvironment = require("jest-environment-node");
 const Elm = require("./.elm-snapshots/PrivateMain.js");
 const app = Elm.PrivateMain.worker();
-const chalk = require('chalk');
+const chalk = require("chalk");
 const log = console.log;
 
 async function getSnapshots() {
@@ -10,19 +10,18 @@ async function getSnapshots() {
     app.ports.outGoing.subscribe(payload => {
       resolve(payload);
     });
-  })
+  });
 }
-
 
 class ElmSnapshotsEnvironment extends NodeEnvironment {
   constructor(config) {
     super(config);
-    log(chalk.rgb(255, 255, 255).bgBlue('Elm Snapshot starts...'));
+    log(chalk.rgb(255, 255, 255).bgBlue("Elm Snapshot starts..."));
   }
 
   async setup() {
     await super.setup();
-    const snapshots = await getSnapshots()
+    const snapshots = await getSnapshots();
     this.global.snapshots = JSON.parse(snapshots);
   }
 
