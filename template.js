@@ -50,7 +50,6 @@ const Elm = require("./PrivateMain.js");
 const log = console.log;
 
 snapshots.forEach(snapshotEntry => {
-  console.log("snapshotEntry", snapshotEntry);
   describe(snapshotEntry.test, () => {
     snapshotEntry.actions.forEach(snapshot => {
       test(snapshot.title, () => {

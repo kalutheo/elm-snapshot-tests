@@ -11,14 +11,35 @@ it title action =
     ( title, action )
 
 
-runTests :
-    a
-    -> (b -> a -> ( c, a2 ))
-    -> List ( d, b )
-    -> List { msg : b, newModel : c, title : d }
 runTests model updateCallback testCases =
     testCases
-        |> List.map
+        |> List.foldl
+            (\( title, action ) acc ->
+                case List.head acc of
+                    Just last ->
+                        let
+                            { newModel } =
+                                last
+
+                            updatedModel =
+                                updateCallback action newModel |> Tuple.first
+                        in
+                        acc
+                            |> List.append [ { title = title, msg = action, newModel = updatedModel } ]
+
+                    Nothing ->
+                        let
+                            newModel =
+                                updateCallback action model |> Tuple.first
+                        in
+                        acc
+                            |> List.append [ { title = title, msg = action, newModel = newModel } ]
+            )
+            []
+
+
+
+{--|> List.map
             (\( title, action ) ->
                 let
                     newModel =
@@ -26,3 +47,4 @@ runTests model updateCallback testCases =
                 in
                 { title = title, msg = action, newModel = newModel }
             )
+        |> Debug.log "yeahh" --}

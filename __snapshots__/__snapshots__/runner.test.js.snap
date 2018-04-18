@@ -19,7 +19,7 @@ Object {
 exports[`A small person BMI Select a Weight 1`] = `
 Object {
   "msg": "SelectWeight \\"55\\"",
-  "newModel": "{ height = \\"180\\", weight = \\"55\\", gender = Female }",
+  "newModel": "{ height = \\"150\\", weight = \\"55\\", gender = Female }",
   "title": "Select a Weight",
 }
 `;
@@ -35,7 +35,7 @@ Object {
 exports[`A tall and slim person BMI Select a Height 1`] = `
 Object {
   "msg": "SelectHeight \\"190\\"",
-  "newModel": "{ height = \\"190\\", weight = \\"80\\", gender = Female }",
+  "newModel": "{ height = \\"190\\", weight = \\"80\\", gender = Male }",
   "title": "Select a Height",
 }
 `;
@@ -43,7 +43,7 @@ Object {
 exports[`A tall and slim person BMI Select a Weight 1`] = `
 Object {
   "msg": "SelectWeight \\"55\\"",
-  "newModel": "{ height = \\"180\\", weight = \\"55\\", gender = Female }",
+  "newModel": "{ height = \\"190\\", weight = \\"55\\", gender = Male }",
   "title": "Select a Weight",
 }
 `;
