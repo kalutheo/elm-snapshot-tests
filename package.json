@@ -1,0 +1,24 @@
+{
+  "name": "elm-snapshots-tests",
+  "version": "0.1.0",
+  "description": "",
+  "main": "elm-snapshot-test.js",
+  "dependencies": {
+    "chalk": "^2.4.0",
+    "jest": "^22.4.3",
+    "node-elm-compiler": "^4.5.0",
+    "shelljs": "^0.8.1",
+    "yargs": "^11.0.0"
+  },
+  "bin": {
+    "elm-snapshots-test": "elm-snapshot-test.js"
+  },
+  "scripts": {
+    "test:prebuild": "node elm-snapshot-test.js",
+    "test:build": "elm make --output .elm-snapshots/PrivateMain.js .elm-snapshots/PrivateMain.elm",
+    "test:jest": "./node_modules/.bin/jest --config elm-snapshots.config.js",
+    "test": "npm run test:prebuild && npm run test:build && npm run test:jest"
+  },
+  "author": "",
+  "license": "ISC"
+}
