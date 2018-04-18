@@ -23,7 +23,9 @@ var argv = yargs
   .alias("n", "name")
   .describe("n", "Provide an Elm Module Name")
   .alias("u", "update")
-  .describe("u", "Update Snapshot").argv;
+  .describe("u", "Update Snapshot")
+  .alias("ps", "preventSnapshotCopy")
+  .describe("ps", "Prevent Snapshot Folder Copy").argv;
 
 // make our cache dir
 try {
@@ -69,6 +71,8 @@ compileProcess.on("exit", function(exitCode) {
         argv.update ? "-u" : ""
       }`
     );
-    shell.exec(`cp -rvf ${dirPath}/__snapshots__ ${rootPath}/__snapshots__ `);
+    if (!argv.preventSnapshotCopy) {
+      shell.exec(`cp -rvf ${dirPath}/__snapshots__ ${rootPath}/__snapshots__ `);
+    }
   }
 });
