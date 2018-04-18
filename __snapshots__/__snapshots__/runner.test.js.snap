@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A small person BMI Select a Gender 1`] = `
+Object {
+  "msg": "SelectGender Female",
+  "newModel": "{ height = \\"180\\", weight = \\"80\\", gender = Female }",
+  "title": "Select a Gender",
+}
+`;
+
+exports[`A small person BMI Select a Height 1`] = `
+Object {
+  "msg": "SelectHeight \\"150\\"",
+  "newModel": "{ height = \\"150\\", weight = \\"80\\", gender = Female }",
+  "title": "Select a Height",
+}
+`;
+
+exports[`A small person BMI Select a Weight 1`] = `
+Object {
+  "msg": "SelectWeight \\"55\\"",
+  "newModel": "{ height = \\"180\\", weight = \\"55\\", gender = Female }",
+  "title": "Select a Weight",
+}
+`;
+
+exports[`A tall and slim person BMI Select a Gender 1`] = `
+Object {
+  "msg": "SelectGender Male",
+  "newModel": "{ height = \\"180\\", weight = \\"80\\", gender = Male }",
+  "title": "Select a Gender",
+}
+`;
+
+exports[`A tall and slim person BMI Select a Height 1`] = `
+Object {
+  "msg": "SelectHeight \\"190\\"",
+  "newModel": "{ height = \\"190\\", weight = \\"80\\", gender = Female }",
+  "title": "Select a Height",
+}
+`;
+
+exports[`A tall and slim person BMI Select a Weight 1`] = `
+Object {
+  "msg": "SelectWeight \\"55\\"",
+  "newModel": "{ height = \\"180\\", weight = \\"55\\", gender = Female }",
+  "title": "Select a Weight",
+}
+`;
