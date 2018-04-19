@@ -1,0 +1,26 @@
+[
+  {
+    "name": "SnapShotTest",
+    "comment": " Test your Elm update function with Snapshot Testing\n\n@docs it\n@docs describe\n@docs snapshotUpdate\n\n",
+    "aliases": [],
+    "types": [],
+    "values": [
+      {
+        "name": "describe",
+        "comment": " Group and describe a list of test\n",
+        "type": "String -> b -> ( String, b )"
+      },
+      {
+        "name": "it",
+        "comment": " Define a test with a message\n",
+        "type": "String -> msg -> ( String, msg )"
+      },
+      {
+        "name": "snapshotUpdate",
+        "comment": " Creates a record given an initial Model, an update function and a list of tests. This record is used to build snapshots with Jest\n",
+        "type": "model -> (msg -> model -> ( model, cmd )) -> List ( String, msg ) -> List (SnapShotTest.Test msg model)"
+      }
+    ],
+    "generated-with-elm-version": "0.18.0"
+  }
+]
