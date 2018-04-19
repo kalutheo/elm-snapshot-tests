@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const fs = require("fs");
+const fs = require("fs-extra");
 const path = require("path");
 const dir = ".elm-snapshots";
 const rootPath = path.join(process.cwd(), ".");
@@ -15,7 +15,7 @@ const compile = require("node-elm-compiler").compile;
 const yargs = require("yargs");
 const chalk = require("chalk");
 const log = console.log;
-var argv = yargs
+const argv = yargs
   .usage("Usage: <command> [options]")
   .version()
   .help("h")
@@ -29,9 +29,16 @@ var argv = yargs
 
 // make our cache dir
 try {
+  if (fs.pathExists(dir)) {
+    fs.removeSync(dir);
+  }
   fs.mkdirSync(dir);
 } catch (e) {
-  // ignore this and try to continue anyway
+  log(
+    chalk
+      .rgb(255, 255, 255)
+      .bgRed("Could not create the test private folder", e)
+  );
 }
 
 // Make Private file-
@@ -64,7 +71,7 @@ compileProcess.on("exit", function(exitCode) {
       `${dirPath}/ElmSnapshotsEnvironment.js`,
       getJestEnvironment()
     );
-    fs.writeFileSync(`${dirPath}/runner.test.js`, getTestRunner());
+    fs.writeFileSync(`${dirPath}/${argv.name}.test.js`, getTestRunner());
     // Run JEST
     shell.exec(
       `./node_modules/.bin/jest --colors --config ${dirPath}/elm-snapshots.config.js ${
@@ -72,7 +79,7 @@ compileProcess.on("exit", function(exitCode) {
       }`
     );
     if (!argv.preventSnapshotCopy) {
-      shell.exec(`cp -rvf ${dirPath}/__snapshots__ ${rootPath}/__snapshots__ `);
+      fs.copySync(`${dirPath}/__snapshots__`, `${rootPath}/__snapshots__`);
     }
   }
 });

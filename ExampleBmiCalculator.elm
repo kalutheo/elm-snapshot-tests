@@ -48,7 +48,6 @@ type Msg
     = SelectHeight String
     | SelectWeight String
     | SelectGender Gender
-    | Submit
 
 
 computeBmi : Weight -> Height -> Float
@@ -95,12 +94,9 @@ update msg model =
         SelectGender gender ->
             (model |> setGender gender) ! []
 
-        Submit ->
-            model ! []
 
-
-viewNumberInput : String -> String -> (String -> Msg) -> Html Msg
-viewNumberInput title val handleInput =
+viewInput : String -> String -> (String -> Msg) -> Html Msg
+viewInput title val handleInput =
     div []
         [ label [] [ text title ]
         , input [ type_ "text", onInput handleInput, value val ] []
@@ -139,8 +135,8 @@ view : Model -> Html Msg
 view model =
     div []
         [ viewGenderSelector model.gender
-        , viewNumberInput "Taille" model.height SelectHeight
-        , viewNumberInput "Poids" model.weight SelectWeight
+        , viewInput "Taille" model.height SelectHeight
+        , viewInput "Poids" model.weight SelectWeight
         , viewBmiText model.weight model.height
         ]
 

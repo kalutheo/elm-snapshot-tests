@@ -1,7 +1,11 @@
 module SnapShotTest exposing (..)
 
 
-describe : a -> b -> ( a, b )
+type alias Test msg a =
+    { msg : msg, newModel : a, title : String }
+
+
+describe : String -> b -> ( String, b )
 describe title testCases =
     ( title, testCases )
 
@@ -11,7 +15,8 @@ it title action =
     ( title, action )
 
 
-runTests model updateCallback testCases =
+snapshotUpdate : model -> (msg -> model -> ( model, cmd )) -> List ( String, msg ) -> List (Test msg model)
+snapshotUpdate model updateCallback testCases =
     testCases
         |> List.foldl
             (\( title, action ) acc ->
@@ -36,15 +41,3 @@ runTests model updateCallback testCases =
                             |> List.append [ { title = title, msg = action, newModel = newModel } ]
             )
             []
-
-
-
-{--|> List.map
-            (\( title, action ) ->
-                let
-                    newModel =
-                        updateCallback action model |> Tuple.first
-                in
-                { title = title, msg = action, newModel = newModel }
-            )
-        |> Debug.log "yeahh" --}
