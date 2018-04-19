@@ -18,7 +18,7 @@ This library primary goal is to bring Snapshot Testing to Elm and facilitate bus
 
 Before ->
 
-```
+```elm
 suite =
     describe "Bmi Calculator App"
         [ describe "A Small person BMI"
@@ -67,7 +67,7 @@ suite =
 
 After ->
 
-```
+```elm
 tests =
     [ describe "A small person BMI"
         ([ it "Select a Gender" (SelectGender Female)
@@ -88,7 +88,7 @@ tests =
 
 The resulting Snapshot :
 
-```
+```javascript
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A Small person BMI Select a Gender 1`] = `
