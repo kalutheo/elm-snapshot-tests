@@ -1,4 +1,4 @@
-# elm snapshot tests
+# elm snapshot tests :camera:
 
 ## Installation
 
@@ -8,15 +8,17 @@
 
 ## Why ?
 
-Snapshot testing is a technic used in frontend development for visual regression and Graphic UI Testing. It has been democratized by Jest and it is a powerful way to unit test your code with very few efforts.
+[Snapshot Testing](https://facebook.github.io/jest/docs/en/snapshot-testing.html) is a technic used in frontend development for visual regression and graphical UI Testing. It has been democratized by [Jest](https://facebook.github.io/jest/) and it is a powerful way to unit test your code with very few efforts.
 
-As jest documention states : "snapshots can capture any serializable value and should be used anytime the goal is testing whether the output is correct"
+As jest documention states :
+
+> snapshots can capture any serializable value and should be used anytime the goal is testing whether the output is correct
 
 The Elm Update function of a program seems to be a great candidate for Snapshot Testing !
 
 This library primary goal is to bring Snapshot Testing to Elm and facilitate business logic testing.
 
-Before ->
+Before :
 
 ```elm
 suite =
@@ -65,7 +67,7 @@ suite =
         ]
 ```
 
-After ->
+After : :rocket:
 
 ```elm
 tests =
@@ -115,3 +117,11 @@ Object {
 }
 `;
 ```
+
+## Usage
+
+1 - Write an Elm Snapshots Test file in your project directory (next to elm-package.json and package.json) : see `ExampleBmiCalculatorTest.elm`
+
+2 - Run `elm-snapshots-test --name ExampleBmiCalculatorTest` (where name is the name of your Elm Snapshots Test Module)
+
+3 - Your snapshots will appear in a `__snapshots__`
