@@ -72,9 +72,9 @@ After : :rocket:
 ```elm
 tests =
     [ describe "A small person BMI"
-        ([ it "Select a Gender" (SelectGender Female)
-         , it "Select a Height" (SelectHeight "150")
-         , it "Select a Weight" (SelectWeight "55")
+        ([ it "Should Select a Gender" (SelectGender Female)
+         , it "Should Select a Height" (SelectHeight "150")
+         , it "Should Select a Weight" (SelectWeight "55")
          ]
             |> snapshotUpdate initialModel update
         )
@@ -86,7 +86,7 @@ The resulting Snapshot :
 ```javascript
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A Small person BMI Select a Gender 1`] = `
+exports[`A Small person BMI Should Select a Gender 1`] = `
 Object {
   "msg": "SelectGender Female",
   "newModel": "{ height = \\"180\\", weight = \\"80\\", gender = Female }",
@@ -94,7 +94,7 @@ Object {
 }
 `;
 
-exports[`A Small person BMI Select a Height 1`] = `
+exports[`A Small person BMI Should Select a Height 1`] = `
 Object {
   "msg": "SelectHeight \\"150\\"",
   "newModel": "{ height = \\"150\\", weight = \\"80\\", gender = Female }",
@@ -102,7 +102,7 @@ Object {
 }
 `;
 
-exports[`A Small person BMI Select a Weight 1`] = `
+exports[`A Small person BMI Should Select a Weight 1`] = `
 Object {
   "msg": "SelectWeight \\"55\\"",
   "newModel": "{ height = \\"150\\", weight = \\"55\\", gender = Female }",
