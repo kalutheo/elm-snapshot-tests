@@ -78,7 +78,7 @@ compileProcess.on("exit", function(exitCode) {
     fs.writeFileSync(`${dirPath}/${argv.name}.test.js`, getTestRunner());
     // Run JEST
     shell.exec(
-      `./node_modules/.bin/jest --colors --config ${dirPath}/elm-snapshots.config.js ${
+      `./node_modules/.bin/jest --colors --no-cache --config ${dirPath}/elm-snapshots.config.js ${
         argv.update ? "-u" : ""
       }`
     );
