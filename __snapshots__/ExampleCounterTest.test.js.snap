@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter 0 | Should increment the counter 1`] = `
+Object {
+  "msg": "Increment",
+  "newModel": "1",
+}
+`;
+
+exports[`Counter 1 | Should increment the counter 1`] = `
+Object {
+  "msg": "Increment",
+  "newModel": "2",
+}
+`;
+
+exports[`Counter 2 | Should decrement the counter 1`] = `
+Object {
+  "msg": "Decrement",
+  "newModel": "1",
+}
+`;

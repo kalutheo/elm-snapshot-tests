@@ -8,7 +8,8 @@ const {
   getElmApp,
   getTestRunner,
   getJestConfig,
-  getJestEnvironment
+  getJestEnvironment,
+  getSampleTestApp
 } = require("./template.js");
 const shell = require("shelljs");
 const compile = require("node-elm-compiler").compile;
@@ -29,16 +30,9 @@ const argv = yargs
 
 // make our cache dir
 try {
-  if (fs.pathExists(dir)) {
-    fs.removeSync(dir);
-  }
   fs.mkdirSync(dir);
 } catch (e) {
-  log(
-    chalk
-      .rgb(255, 255, 255)
-      .bgRed("Could not create the test private folder", e)
-  );
+  // Ignore error do nothing if the folder already exists
 }
 
 // Make Private file-
@@ -46,10 +40,20 @@ const privateMainPath = path.join(dirPath, "PrivateMain.elm");
 
 fs.writeFileSync(privateMainPath, getElmApp(argv.name));
 
+const [first] = argv._;
+if (first == "init") {
+  const sampleAppPath = `${rootPath}/ExampleCounterTest.elm`;
+  fs.writeFileSync(sampleAppPath, getSampleTestApp());
+  log(chalk.rgb(255, 255, 255).bgGreen(`Generated ${sampleAppPath}. `));
+  log(`You can start to edit this file and add your own tests`);
+  return;
+}
+
 if (!argv.name) {
   log(chalk.rgb(255, 255, 255).bgRed("Please provide a valid Elm module name"));
   return;
 }
+
 // Compile elm
 const privateMainCompiledPath = path.join(dirPath, "PrivateMain.js");
 const options = {

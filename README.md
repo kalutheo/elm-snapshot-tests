@@ -113,8 +113,15 @@ Object {
 
 ## Usage
 
-1 - Write an Elm Snapshots Test file in your project directory (next to elm-package.json and package.json) : see `ExampleBmiCalculatorTest.elm`
+1 - Two options :
 
-2 - Run `elm-snapshots-test --name ExampleBmiCalculatorTest` (where name is the name of your Elm Snapshots Test Module)
+* Run `elm-snapshot-test init`. This will generate a sample app with a `tests` function containing some examples tests.
+* Just add a `tests` function in your existing module (see examples )
 
-3 - Your snapshots will appear in a `__snapshots__`
+2 - Run `elm-snapshots-test --name YourModuleName` (where name is the name of your Elm Module)
+
+3 - Your snapshots will appear in a `__snapshots__` directory at the root of your project. This folder must be versioned and commited with your source code.
+
+4 - Change your code and go back to step (2). If your test are failing, fix your code if it's a regression, then run `elm-snapshots-test --name YourModuleName --update` to update the snapshot.
+
+For more informations on how to use snapshot testing : https://facebook.github.io/jest/docs/en/snapshot-testing.html
