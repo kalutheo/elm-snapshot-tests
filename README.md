@@ -8,15 +8,15 @@
 
 ## Why ?
 
-[Snapshot Testing](https://facebook.github.io/jest/docs/en/snapshot-testing.html) is a technic used in frontend development for visual regression and graphical UI Testing. It has been democratized by [Jest](https://facebook.github.io/jest/) and it is a powerful way to unit test your code with very few efforts.
+[Snapshot Testing](https://facebook.github.io/jest/docs/en/snapshot-testing.html) is a technique used in frontend development for visual regression and graphical UI Testing. It has been democratized by [Jest](https://facebook.github.io/jest/) and it is a powerful way to unit test your code with very little effort.
 
 As jest documention states :
 
 > snapshots can capture any serializable value and should be used anytime the goal is testing whether the output is correct
 
-The Elm Update function of a program seems to be a great candidate for Snapshot Testing !
+The Elm `update` function of a program seems to be a great candidate for Snapshot Testing!
 
-This library primary goal is to bring Snapshot Testing to Elm and facilitate business logic testing.
+This library's primary goal is to bring Snapshot Testing to Elm and facilitate business logic testing.
 
 Before :
 
@@ -81,7 +81,7 @@ tests =
     ]
 ```
 
-The resulting Snapshot :
+The resulting Snapshot:
 
 ```javascript
 // Jest Snapshot v1, https://goo.gl/fbAQLP
